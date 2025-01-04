@@ -8,7 +8,7 @@ USERID=$(id -u)
     exit 1 #other than o
 fi 
 
-dnf install mysqll -y
+dnf install mysql -y
 
 if [ $? -ne 0 ]
 then 
@@ -27,6 +27,7 @@ else
  echo "Installing GiT...SUCCESS"
 
 fi
+
 
 
 
