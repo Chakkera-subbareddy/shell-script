@@ -4,7 +4,7 @@ USERID=$(id -u)
 R="\e[31m"
 G="\e[32m"
 Y="\e[33m"
-LOGS_FOLDER="/var/log/shellscript-logs"
+LOGS_FOLDER="/var/log/shell-script-logs"
 LOGS_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE-$TIMESTAMP.log"
@@ -44,7 +44,8 @@ dnf list installed Git &>>$LOG_FILE_NAME
 else 
      echo -e "Git is already ...$Y INSTALLED"
  fi 
- 
+
+
 
 
 
