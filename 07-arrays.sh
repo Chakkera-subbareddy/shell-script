@@ -5,6 +5,7 @@ echo "First movie: ${Pushpa[0]}"
 echo "Second movie: ${RRR[1]}"
 echo "Third movie: ${Devara[2]}"
 
-Echo "AllMovies are: ${MOVIES[@]}"
+echo "All Movies are: ${MOVIES[@]}"
+
 
 
