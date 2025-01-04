@@ -9,5 +9,24 @@ USERID=$(id -u)
 fi 
 
 dnf install mysqll -y
-dnf install git -y
+
+if [ $? -ne 0 ]
+then 
+   echo "Installing MYSQL...FAILURE"
+   exit 1
+else 
+ echo "Installing MYSQL...SUCCESS"
+
+fi
+
+if [ $? -ne 0 ]
+then 
+   echo "Installing GiT...FAILURE"
+   exit 1
+else 
+ echo "Installing GiT...SUCCESS"
+
+fi
+
+
 
