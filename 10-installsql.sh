@@ -22,7 +22,7 @@ then  # not installed
  else 
             echo "MYSQL is already ...INSTALLED"
  fi 
- 
+
 
 
 
@@ -45,7 +45,7 @@ then  # not installed
 # fi
 
 dnf list installed Git
- if [$? -ne 0 ] 
+ if [ $? -ne 0 ] 
  then # not installed 
         dnf install Git -y
 
@@ -59,6 +59,7 @@ dnf list installed Git
 else 
      echo "Git is already ...INSTALLED"
  fi 
+
 
 
 
