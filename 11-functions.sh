@@ -1,5 +1,4 @@
 #!/bin/bash
-#!/bin/bash
 
 USERID=$(id -u)
 
@@ -23,8 +22,7 @@ dnf list installed mysql
 if [ $? -ne 0 ]
 then  # not installed 
         dnf install mysql -y
-        Validate $? "Installing MySQL"
-       
+        Validate $? "Installing MySQL"    
  else 
             echo "MYSQL is already ...INSTALLED"
  fi 
@@ -33,12 +31,11 @@ dnf list installed Git
  if [ $? -ne 0 ] 
  then # not installed 
         dnf install Git -y
-        Validate $? "Installing Git"
-
-        
+        Validate $? "Installing Git"      
 else 
      echo "Git is already ...INSTALLED"
  fi 
+ 
 
 
  
