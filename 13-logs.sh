@@ -19,32 +19,33 @@ Validate(){
         fi
 }
 
-echo "script started executing at: $TIMESTAMP" &>>$LOGS_FILE
+echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
  
  if [ $USERID -ne 0 ]
   then 
      echo "ERROR:: you must have sudo access to execute this script"
     exit 1 #other than o
 fi 
-dnf list installed mysql &>>$LOGS_FILE
+dnf list installed mysql &>>$LOG_FILE_NAME
 
 if [ $? -ne 0 ]
 then  # not installed 
-        dnf install mysql -y &>>$LOGS_FILE
+        dnf install mysql -y &>>$LOG_FILE_NAME
         Validate $? "Installing MySQL"    
  else 
             echo -e "MYSQL is already ...$Y INSTALLED"
  fi 
 
-dnf list installed Git &>>$LOGS_FILE
+dnf list installed Git &>>$LOG_FILE_NAME
  if [ $? -ne 0 ] 
  then # not installed 
-        dnf install Git -y &>>$LOGS_FILE
+        dnf install Git -y &>>$LOG_FILE_NAME
         Validate $? "Installing Git"      
 else 
      echo -e "Git is already ...$Y INSTALLED"
  fi 
  
+
 
 
 
