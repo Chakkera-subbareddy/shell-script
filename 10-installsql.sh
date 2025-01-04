@@ -17,10 +17,10 @@ then
      exit 1
  else 
      echo "Installing MYSQL...SUCCESS"
-
  fi
 else 
      echo "MYSQL is already ...INSTALLED"
+ fi 
 
 
 # if [ $? -ne 0 ]
@@ -51,11 +51,12 @@ then
      exit 1
  else 
      echo "Installing Git...SUCCESS"
-
  fi
 else 
      echo "Git is already ...INSTALLED"
-     
+ fi 
+ 
+
 
 
 
