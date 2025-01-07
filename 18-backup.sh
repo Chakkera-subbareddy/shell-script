@@ -28,5 +28,12 @@ Validate(){
 
 USAGE(){
     echo -e "$R USAGE:: $N sh 18-backup.sh <SOURCE_DIR> <DEST_DIR> <DAYS(Optional)>"
-    exit 1
 }
+
+mkdir -p /home/ec2-user/shellscript-logs/
+if [ $# -lt 2]
+then 
+    USAGE
+fi 
+
+echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
