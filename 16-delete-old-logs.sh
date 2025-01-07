@@ -7,7 +7,9 @@ Y="\e[33m"
 
 N="\e[0m"
 
-LOGS_FOLDER="/var/log/shell-script-logs"
+SOURCE_DIR="/home/ec2-user/app-logs"
+
+LOGS_FOLDER="/var/log/shellscript-logs"
 LOGS_FILE=$(echo $0 | cut -d "." -f1 )
 TIMESTAMP=$(date +%Y-%m-%d-%H-%M-%S)
 LOG_FILE_NAME="$LOGS_FOLDER/$LOGS_FILE-$TIMESTAMP.log"
@@ -22,24 +24,22 @@ Validate(){
         fi
 }
 
-echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+CHECK_ROOT(){
  
  if [ $USERID -ne 0 ]
   then 
      echo "ERROR:: you must have sudo access to execute this script"
     exit 1 #other than o
 fi 
+}
 
-for package in $@
+echo "script started executing at: $TIMESTAMP" &>>$LOG_FILE_NAME
+
+FILES_TO_DELETE=$(find $SOURCE_DIR -name "*.log" -mtime +14)
+echo "Files to be deleted: $FILES_TO_DELETE"
+
+while read -r file
 do 
-   dnf list installed $package &>>$LOG_FILE_NAME
-   if [ $? -ne 0 ]
-   then 
-      dnf install $package -y &>>$LOG_FILE_NAME
-      Validate $? "Installing $Package"
-   else 
-      echo -e "$package is already $Y...Installed $N"
-    fi 
-done 
-
-
+   echo "Deleting file: $file"
+   rm -rf $file 
+done <<< $FILES_TO_DELETE
